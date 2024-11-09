@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter,-apple-system,Helvetica,Arial,sans-serif;
+}
+ 
+a {
+    text-decoration: none;
+}
+ 
+body {
+    background-color: #f1f2f4;
+}
+
+header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    background-color: #2874f0;
+    position: relative;
+}
+ 
+.logo {
+    margin-left: 100px;
+}
+
+.logo img {
+    width: 60px;
+    height: 30px;
+}
+ 
+.searchbar {
+    height: 40px;
+    width: 460px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: #777a7e;
+    background-color: #f0f5ff;
+    padding: 1px 16px;
+}
+ 
+.searchbar i{
+    font-size: 1rem;
+    margin: 0 10px;
+    color: #2874f0;
+}
+ 
+.searchbar input{
+    height: 40px;
+    width: 100%;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.login {
+    background-color: white;
+    padding: 8px 40px;
+    color: #2874f0;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+button {
+    border: none;
+    background-color: white;
+    color: #2874f0;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 10px 0;
+    z-index: 1;
+    margin: 30px -99px 0 0;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-menu a i {
+    margin-right: 10px;
+    color: #0077e6;
+    padding: 5px 10px;
+}
+
+hr {
+    color: #1e201f14;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-header {
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.dropdown-header a {
+    color: #0077e6;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.more i {
+    padding: 0 5px;
+}
+
+.style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.style i {
+    font-size: 1rem;
+}

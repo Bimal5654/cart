@@ -1,0 +1,74 @@
+<header>
+    <div class="logo">
+        <img src="image/signup-logo.png" alt="Flipkart-LOGO">
+    </div>
+
+    <div class="searchbar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" name="" id="" placeholder="Search for Products, Brands and More">
+    </div>
+
+    <% if (!locals.isAuth) { %>
+        <div class="login style">
+            <div class="dropdown">
+                <button>  <i class="fa-regular fa-circle-user"></i>Login<i class="fa-solid fa-angle-down"></i></button>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <a href="/signup">New Customer? <span>Sign Up</span></a>
+                    </div>
+                    <hr>
+                    <a href="#"><i class='fas fa-user-circle'></i>My Profile</a>
+                    <hr>
+                    <a href="#"><i class="fab fa-first-order"></i>Orders</a>
+                    <hr>
+                    <a href="#"><i class="fa-solid fa-heart"></i>Wishlist</a>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+    <% if (locals.isAdmin) { %>
+        <div class="seller style">
+            <span><a href="/admin/products">Manage Products</a></span>
+        </div>
+
+        <div class="seller style">
+            <span><a href="/admin/orders">Manage Orders</a></span>
+        </div>
+    <% } %>
+
+    <% if (!locals.isAdmin) { %>
+        <div class="cart style">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Cart</span>
+        </div>
+    <% } %>
+
+    <% if (locals.isAuth && !locals.isAdmin) { %>
+        <div class="seller style">
+            <i class="fa-solid fa-store"></i>
+            <span><a href="/orders">Orders</a></span>
+        </div>
+    <% } %>
+
+    <% if (locals.isAuth) { %>
+        <div class="login style">
+            <form action="/logout" method="POST">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                <button>  <i class="fa-regular fa-circle-user"></i>Logout<i class="fa-solid fa-angle-down"></i></button>
+            </form>
+        </div>
+    <% } %>
+  
+    
+    <% if (!locals.isAuth) { %>
+        <div class="seller style">
+            <i class="fa-solid fa-store"></i>
+            <span>Become a Seller</span>
+        </div>
+    <% } %>
+
+    <div class="menu">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+    </div>
+</header>

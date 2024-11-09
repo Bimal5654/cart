@@ -1,0 +1,60 @@
+<%- include('../../shared/includes/head', { pageTitle: 'Signup' }) %>
+  <link rel="stylesheet" href="/style/navbar.css">
+  <link rel="stylesheet" href="/style/signup.css"> 
+  <script src="/script/signup.js" defer></script>  
+</head>
+<body>
+    <%- include('../../shared/includes/header') %>
+    <section class="signup-container">
+        <div class="left-section">
+            <h1>Looks like you're new here!</h1>
+            <p>Sign up with your mobile number to get started</p>
+
+            <div class="icon">
+
+            </div>
+        </div>
+
+        <div class="right-section">
+            <% if (inputData.errorMessage) { %>
+                <section class="alert">
+                    <h2>Invalid Input</h2>
+                    <p><%= inputData.errorMessage %></p>
+                </section>
+            <% } %>
+            <form action="/signup" method="POST">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                <div class="input-container">
+                    <input type="text" id="mobile" name="mobile" value="<%= inputData.mobile %>" placeholder="" maxlength="14" oninput="addCountryCode(this)" onchange="addCountryCode(this)" onblur="validateMobileNumber(this)">
+                    <label for="mobile">Enter Mobile Number</label>
+                    <small id="mobile-error" style="color: rgb(37, 33, 33); display: none;">Please enter a valid 10-digit mobile number.</small>
+                </div>
+
+                <div class="input-container">
+                    <input type="number" id="pin1" name="pin1" value="<%= inputData.pin1 %>" class="pin-input" maxlength="1" oninput="moveFocus(this, 'pin2')" required>
+                    <input type="number" id="pin2" name="pin2" value="<%= inputData.pin2 %>" class="pin-input" maxlength="1" oninput="moveFocus(this, 'pin3')" required>
+                    <input type="number" id="pin3" name="pin3" value="<%= inputData.pin3 %>" class="pin-input" maxlength="1" oninput="moveFocus(this, 'pin4')" required>
+                    <input type="number" id="pin4" name="pin4" value="<%= inputData.pin4 %>" class="pin-input" maxlength="1" oninput="moveFocus(this)" required>
+                    <label for="pin">Create 4-digit Pin</label>
+                    <span id="toggle-pin-1" class="eye-icon" onclick="togglePin('pin', 'toggle-pin-1')">👁️</span>
+                </div>
+
+                <div class="input-container">
+                    <input type="number" id="confirm-pin1" name="confirmPin1" value="<%= inputData.confirmPin1 %>" class="pin-input" maxlength="1" oninput="moveFocus(this, 'confirm-pin2')" required>
+                    <input type="number" id="confirm-pin2" name="confirmPin2" value="<%= inputData.confirmPin2 %>" class="pin-input" maxlength="1" oninput="moveFocus(this, 'confirm-pin3')" required>
+                    <input type="number" id="confirm-pin3" name="confirmPin3" value="<%= inputData.confirmPin3 %>" class="pin-input" maxlength="1" oninput="moveFocus(this, 'confirm-pin4')" required>
+                    <input type="number" id="confirm-pin4" name="confirmPin4" value="<%= inputData.confirmPin4 %>" class="pin-input" maxlength="1" oninput="moveFocus(this)" required>
+                    <label for="pin">Confirm 4-digit Pin</label>
+                    <span id="toggle-pin-2" class="eye-icon" onclick="togglePin('confirm-pin', 'toggle-pin-2')">👁️</span>
+                </div>
+
+                <p id="pin-mismatch-message" style="color: rgb(37, 32, 32); display: none;">Pins do not match. Please try again.</p>
+                
+                <p class="terms">By continuing, you agree to Flipkart's <a href="#">Terms of Use</a>and <a href="#">Privacy Policy</a></p>
+                <button type="submit" class="submit">CONTINUE</button>
+                <a href="/login" class="login-link">Existing User? Log in</a>
+            </form>
+        </div>
+    </section>
+
+    <%- include('../../shared/includes/footer') %>

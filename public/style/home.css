@@ -1,0 +1,16 @@
+.catagory {
+    height: 126px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    margin: 10px 0;
+}
+
+.cating img{
+    height: 55px;
+}
+
+.catinfo p {
+    font-weight: 400;
+}
