@@ -1,28 +1,27 @@
-version: '3'  # Specifies the Docker Compose version
+version: '3'  
 
 services:
-  mongodb:  # This is the service for MongoDB
-    image: mongo  # Use the official MongoDB Docker image
-    container_name: mongodb  # Assign a name to the MongoDB container
+  mongodb:
+    image: mongo  
+    container_name: mongodb  
     ports:
-      - "27017:27017"  # Expose MongoDB's default port (27017) to the host
+      - "27017:27017" 
     volumes:
-      - ./data/db:/data/db  # Mount a local directory to persist MongoDB data
+      - ./data/db:/data/db  
     networks:
-      - app-network  # Place MongoDB in the same network as the app
-
-  app:  # This is the service for your Node.js application
-    build: .  # Build your app image using the Dockerfile in the current directory
-    container_name: myapp  # Assign a name to the app container
+      - app-network  
+  app:  
+    build: .  
+    container_name: myapp  
     ports:
-      - "5678:5678"  # Expose your app's port (5678) to the host
+      - "5678:5678"  
     environment:
-      - MONGO_URL=mongodb://mongodb:27017/online-cart  # The URI to connect to MongoDB service
+      - MONGO_URL=mongodb://mongodb:27017/online-cart  
     depends_on:
-      - mongodb  # Ensure MongoDB starts before the app
+      - mongodb  
     networks:
-      - app-network  # Place the app in the same network as MongoDB
+      - app-network  
 
 networks:
   app-network:
-    driver: bridge  # Create a custom bridge network so the containers can communicate with each other
+    driver: bridge  
